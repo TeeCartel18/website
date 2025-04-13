@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tee Cartel - DTF Custom Printing</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #ff4500;
+            --secondary: #222222;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e63e00;
+        }
+        
+        /* Products Section */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+        }
+        
+        .product-img svg {
+            width: 80%;
+            height: 80%;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img svg {
+            transform: scale(1.1);
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        /* About DTF Section */
+        .about-dtf {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .about-dtf .section-title h2 {
+            color: white;
+        }
+        
+        .dtf-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .dtf-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dtf-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .dtf-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .dtf-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .dtf-features {
+            list-style: none;
+        }
+        
+        .dtf-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-icon {
+            margin-right: 0.8rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            background-color: #f1f1f1;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-table th, 
+        .pricing-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-table th {
+            background-color: var(--secondary);
+            color: white;
+            font-size: 1.1rem;
+        }
+        
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .pricing-table tr:hover td {
+            background-color: #f9f9f9;
+        }
+        
+        .pricing-note {
+            margin-top: 2rem;
+            background-color: #fff3e0;
+            padding: 1rem;
+            border-left: 4px solid var(--primary);
+            border-radius: 4px;
+        }
+        
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #f1f1f1;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .quote-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            color: #ddd;
+        }
+        
+        /* Location Section */
+        .location {
+            background-color: white;
+        }
+        
+        .location-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .location-map {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+        
+        .location-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .location-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .location-details {
+            margin-bottom: 2rem;
+        }
+        
+        .location-hours {
+            margin-top: 2rem;
+        }
+        
+        .location-hours h4 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+        }
+        
+        .day {
+            font-weight: 600;
+            width: 100px;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            width: 24px;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .social-media {
+            margin-top: 2rem;
+        }
+        
+        .social-media h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+        
+        .social-handles {
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-handle {
+            display: flex;
+            align-items: center;
+            margin-right: 1.5rem;
+            text-decoration: none;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+        
+        .social-handle:hover {
+            color: var(--primary);
+        }
+        
+        .social-icon {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .footer-logo span {
+            color: var(--primary);
+        }
+        
+        .footer-about p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 1rem;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+        }
+        
+        .footer-links h3,
+        .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-contact .info-item {
+            color: #ddd;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+            
+            .pricing-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">TEE <span>CARTEL</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="DTF.html" target="_blank" rel="noopener noreferrer">About DTF</a></li>
+                    <li><a href="HIW.html" target="_blank" rel="noopener noreferrer">How It Works</a></li>
+                    <li><a href="Pricing.html" target="_blank" rel="noopener noreferrer">Pricing</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="Contact.html" target="_blank" rel="noopener noreferrer">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Premium DTF Custom Printing</h1>
+                <p>High-quality Direct-to-Film printing for t-shirts, hoodies, hats, and more. Vibrant colors, incredible detail, and exceptional durability.</p>
+                <a href="#contact" class="btn">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M70,40 L130,40 L140,60 L150,50 L160,65 L150,80 L150,160 L50,160 L50,80 L40,65 L50,50 L60,60 L70,40 Z" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M70,40 L80,70 L120,70 L130,40" fill="none" stroke="#333" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3>Adult T-Shirts</h3>
+                        <span class="product-price">$50</span>
+                        <p>Premium quality adult t-shirts available in various colors and sizes. Perfect canvas for your custom designs.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M70,50 L130,50 L140,70 L150,60 L160,75 L150,90 L150,150 L50,150 L50,90 L40,75 L50,60 L60,70 L70,50 Z" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M70,50 L80,80 L120,80 L130,50" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M80,100 L120,100" stroke="#333" stroke-width="1" stroke-dasharray="2,2"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3>Kids T-Shirts</h3>
+                        <span class="product-price">$40</span>
+                        <p>Comfortable and durable t-shirts for kids in a range of sizes and colors. Bring their imagination to life!</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M65,40 L135,40 L145,60 L155,50 L165,65 L155,80 L155,160 L45,160 L45,80 L35,65 L45,50 L55,60 L65,40 Z" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M65,40 L75,70 L125,70 L135,40" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M45,80 L45,110 L75,110 L75,80" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M155,80 L155,110 L125,110 L125,80" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M85,40 L85,30 L115,30 L115,40" fill="none" stroke="#333" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3>Adult Hoodies</h3>
+                        <span class="product-price">$70</span>
+                        <p>Stay warm and stylish with our premium hoodies, perfect for cooler weather and casual outings.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M65,50 L135,50 L145,70 L155,60 L165,75 L155,90 L155,150 L45,150 L45,90 L35,75 L45,60 L55,70 L65,50 Z" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M65,50 L75,80 L125,80 L135,50" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M45,90 L45,120 L70,120 L70,90" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M155,90 L155,120 L130,120 L130,90" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M85,50 L85,40 L115,40 L115,50" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M90,100 L110,100" stroke="#333" stroke-width="1" stroke-dasharray="2,2"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3>Kids Hoodies</h3>
+                        <span class="product-price">$55</span>
+                        <p>Cozy hoodies for children with your custom design. Great for school, sports teams, or just everyday wear.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50,100 C50,80 70,70 100,70 C130,70 150,80 150,100 L140,120 L60,120 L50,100 Z" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M60,120 L60,130 L140,130 L140,120" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M75,70 L75,60 L125,60 L125,70" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M150,100 L170,95 L170,105 L150,100" fill="none" stroke="#333" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3>Trucker Hats</h3>
+                        <span class="product-price">$25</span>
+                        <p>Classic mesh-backed trucker style hats with a customizable front panel. Perfect for teams, events, or brands.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50,100 C50,80 70,70 100,70 C130,70 150,80 150,100 L140,120 L60,120 L50,100 Z" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M60,120 L60,125 L140,125 L140,120" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M140,120 L150,130 L50,130 L60,120" fill="none" stroke="#333" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3>Baseball Hats</h3>
+                        <span class="product-price">$35</span>
+                        <p>Traditional baseball caps with your custom design. High-quality construction for everyday wear.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M70,50 L130,50 L140,70 L145,65 L150,75 L145,85 L145,140 L55,140 L55,85 L50,75 L55,65 L60,70 L70,50 Z" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M70,50 L80,70 L120,70 L130,50" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M85,140 L85,160 L115,160 L115,140" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M90,100 L110,100" stroke="#333" stroke-width="1" stroke-dasharray="2,2"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3>Onesies</h3>
+                        <span class="product-price">$35</span>
+                        <p>Soft and comfortable baby onesies with custom designs. Perfect for gifts, special occasions, or just because.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M60,100 L60,140 C60,150 70,160 100,160 C130,160 140,150 140,140 L140,100 C140,90 130,80 100,80 C70,80 60,90 60,100 Z" fill="none" stroke="#333" stroke-width="2"/>
+                            <path d="M140,110 L150,110 L150,130 L140,130" fill="none" stroke="#333" stroke-width="2"/>
+                            <ellipse cx="145" cy="120" rx="5" ry="10" fill="none" stroke="#333" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3>Mugs</h3>
+                        <span class="product-price">$25</span>
+                        <p>Custom printed mugs for your morning coffee or afternoon tea. Makes a great personalized gift.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
